@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://allfont.net/allfont.css?fonts=star-jedi" rel="stylesheet" type="text/css" />
+    <title>Document</title><!--  -->
+    <style>
+        @font-face {
+            font-family: myfont;
+            src: url(C:\Users\mamay\Downloads\star_jedi.zip\starjedi);
+        }
+        @import url(https://allfont.net/allfont.css?fonts=star-jedi);
+        :root{
+            --clr-neon: #FFE81F;
+            --clr-bg : black ;
+
+            --clr-neontwo : #4D4DFF ;
+        }
+        body{
+            margin: 0;
+        }
+        .container{
+            position: static;
+            display: flex; 
+            width: 100%;
+           height:715px;
+            background-color: rgb(36, 36, 36);
+           justify-content: center;
+           background-image: url(back.fix.jpg);
+        
+        }
+       
+        .content{
+           margin-top:100px;
+           display: flex;
+           flex-direction: column;
+
+        }
+        .mode{
+            margin-top: 30px;
+            display: flex;
+           flex-direction: column;
+      align-items: center;
+      margin-bottom: 278px;
+        }
+.button{
+    font-family: 'Star Jedi', arial;
+    font-size: 20px;
+    color: var(--clr-neon);
+    text-decoration: none;
+   border: var(--clr-neon )5px solid;
+   padding: 10px;
+   margin: 5px;
+   width: 300px;
+   border-radius: 20px;
+   text-align: center;
+   text-shadow: 0 0 .20em  #fff7,0 0 .10em var(--clr-neon)
+   ;
+box-shadow: inset 0 0 .5em var(--clr-neon),0 0 .5em var(--clr-neon)
+;
+
+  
+        }
+
+        .button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #00ff00, #ff00ff, #00ff00, #ff00ff);
+  background-size: 400% 400%;
+  z-index: -1;
+  filter: blur(20px);
+  animation: neon-gradient 2s ease-in-out infinite;
+}
+@keyframes neon-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.button:hover {
+  color: #000000;
+  background-color: #FFE81F;
+}
+
+.button:hover:before {
+  animation: none;
+  opacity: 0;
+}
+        .logo{
+            width: 100%;
+            height: auto;
+        }
+  
+
+    </style>
+</head>
+<body>
+ <div class="container">
+
+        
+   
+    <div class="content">
+        <div class="logo">
+<img src="logo.png" style="width: 100%;
+height: 200px;">
+        </div>
+        <div class="mode">
+          <a href="#" class="button">1 PLAYER</a>
+          <a href="#" class="button">2 PLAYER</a>
+
+    </div>
+
+
+ </div>
+</body>
+</html>
