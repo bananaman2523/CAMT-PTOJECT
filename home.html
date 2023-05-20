@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://allfont.net/allfont.css?fonts=star-jedi" rel="stylesheet" type="text/css" />
+    
     <title>Document</title>
     <style>
         @font-face {
@@ -133,7 +135,6 @@
             font-size: 30px;
             text-shadow: 0 0 .20em #fff7, 0 0 .10em var(--clr-neon);
             box-shadow: inset 0 0 .5em var(--clr-neon), 0 0 .5em var(--clr-neon);
-
         }
 
         .music-button:before {
@@ -159,6 +160,21 @@
             100% {
                 background-position: 0% 50%;
             }
+        }
+
+        .music-button.paused:before {
+            background-color: transparent;
+        }
+
+        .music-button.paused:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 39px;
+            height: 2px;
+            background-color: var(--clr-neon);
+            transform: translate(-50%, -50%) rotate(45deg);
         }
 
         .music-button:hover {
@@ -187,20 +203,28 @@
                 <a href="#" class="button">1 PLAYER</a>
                 <a href="#" class="button">2 PLAYER</a>
             </div>
+            
             <audio id="background-music" src="StarWarMusic.mp3" autoplay loop></audio>
         </div>
+        
     </div>
+
+    <script src="https://kit.fontawesome.com/8ae408903d.js" crossorigin="anonymous"></script>
     <script>
         var audio = document.getElementById("background-music");
-        var volumeButton = document.getElementById("volume-button");
+        var musicButton = document.querySelector(".music-button");
+
 
         function toggleMusic() {
         if (audio.paused) {
             audio.play();
+            musicButton.classList.remove("paused");
         } else {
             audio.pause();
+            musicButton.classList.add("paused");
         }
         }
+        
 
         
         
