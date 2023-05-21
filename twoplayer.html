@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe</title>
+    <style>
+          @font-face {
+            font-family: myfont;
+            src: url(C:\Users\mamay\Downloads\star_jedi.zip\starjedi);
+        }
+        @import url(https://allfont.net/allfont.css?fonts=star-jedi);
+        :root{
+            --clr-neon: #FFE81F;
+            --clr-bg : black ;
+--clr-neonone : rgb(255, 59, 59) ;
+            --clr-neontwo : #4343ff ;
+        }
+        body{
+            margin: 0;
+        }
+         .container{
+            position: static;
+            display: flex; 
+            flex-direction: column;
+            width: 100%;
+            height: 100vh;
+           
+           justify-content: center;
+           background-image: url(back.fix.jpg);
+           
+           align-items: center;
+       
+        
+        }
+        .content {
+            
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 2px;
+            width: auto;
+            height: auto;
+            margin: 0 auto;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        .cell {
+            border-radius: 5px;
+            font-family: 'Star Jedi', arial;
+    font-size: 20px;
+            margin: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+     width: 70px;
+     height: 70px;
+            cursor: pointer;
+            border: var(--clr-neon )2px solid;
+            color: red;
+            text-shadow: 0 0 .20em  rgba(255, 255, 255, 0.467),0 0 .50em var(--clr-neon)
+   ;
+box-shadow: inset 0 0 .5em var(--clr-neon),0 0 .5em var(--clr-neon)
+;
+        }
+        .cell .x{
+            color: #ff005b;
+        }
+        .cell .o{
+            color: blue;
+        }
+        .neon-text {
+    font-family: 'star-jedi', sans-serif;
+    font-size: 24px;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #4D4DFF, 0 0 40px #4D4DFF, 0 0 55px #4D4DFF, 0 0 75px #4D4DFF;
+    animation: neon-glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes neon-glow {
+    from {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #4D4DFF, 0 0 40px #4D4DFF, 0 0 55px #4D4DFF, 0 0 75px #4D4DFF;
+    }
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #FFE81F, 0 0 40px #FFE81F, 0 0 55px #FFE81F, 0 0 75px #FFE81F;
+    }
+}
+
+        .cell:hover {
+            background-color: #ddd;
+        }
+        .reset-button {
+            display: block;
+            width: 100px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #ccc;
+            cursor: pointer;
+        }
+        .player{
+        
+            font-family: 'Star Jedi', arial;
+    font-size: 20px;
+               display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: #ddd;
+            margin-top: 50px;
+            justify-content: space-between;
+        }
+        .player-x-score{
+           font-size: 25px;
+           padding: 20px;
+           border: 5px solid rgb(175, 175, 175);
+       border-top:hidden ;
+       border-bottom: hidden;
+       border-left: hidden;
+            color: black;
+             -webkit-text-stroke: 1px rgb(255, 26, 26);
+    text-shadow: 0 0 20px #ff005b ;
+        }
+        .player-o-score{
+            font-size: 25px;
+            padding: 20px;
+            border: 5px solid rgb(175, 175, 175);
+       border-top:hidden ;
+       border-bottom: hidden;
+       border-right: hidden;
+       -webkit-text-stroke: 1px rgb(0, 8, 255);
+            color: rgb(0, 0, 0);
+            text-shadow: 0 0 20px #2f00ff ;
+        }
+        .score{
+            font-size: 40px;
+            padding: 20px;
+            margin-top: 5px;
+            text-align: center;
+
+        }
+
+.results{
+    width: 200px;
+color: #000000;
+-webkit-text-stroke: 1px rgb(238, 255, 0);
+text-align: center;
+  text-shadow: 0 0 .20em  rgba(255, 255, 255, 0.467),0 0 .50em var(--clr-neon)
+ }
+        
+    </style>
+</head>
+<body>
+  
+    <div class="container">
+      <div class="cursor-tacker">
+
+      </div>
+        <div class="board">
+            <div class="content">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+
+         
+        </div>
+        <div class="player">
+            <div class="player-x-score">
+            
+            sith (x)
+            <div class="score x">
+            0
+            </div>
+            </div>
+            <div id="result" class="results" >
+            
+            </div>
+            <div class="player-o-score">
+               
+               jedi (o)
+                <div class="score o">
+            0
+                </div>
+            </div>
+                        </div>
+    
+<!-- <div class="reset-button" onclick="resetBoard()">Reset Board</div>-->     
+    </div>
+   
+
+    <script>
+        const cells = document.querySelectorAll('.cell');
+        const boardSize = 5;
+        const winCondition = 4;
+        let currentPlayer = 'x';
+      
+  /// currentPlayer.style.color = "red";
+        let gameEnded = false;
+        let playerXScore = 0;
+        let playerOScore = 0;
+        cells.forEach(cell => {
+            cell.addEventListener('click', handleCellClick);
+        });
+    
+        function handleCellClick() {
+            if (gameEnded || this.textContent !== '') return;
+    
+            this.textContent = currentPlayer;
+    
+            if (checkWinCondition(currentPlayer)) {
+                const winnerMessage = `Player ${currentPlayer} wins!`;/*       fix code (bi;;) display when win*/
+    document.getElementById('result').textContent = winnerMessage;
+                
+                gameEnded = true;
+            } else if (checkDrawCondition()) {
+                const drawMessage = "Tie!";
+    document.getElementById('result').textContent = drawMessage;
+
+
+                gameEnded = true;                                        /*       fix code (bill) display when draw*/
+            } else {
+                currentPlayer = currentPlayer === 'x' ? 'o' : 'x';
+            }
+        }
+    
+        function checkWinCondition(player) {
+            // Check rows
+            for (let row = 0; row < boardSize; row++) {
+                for (let col = 0; col <= boardSize - winCondition; col++) {
+                    let hasWin = true;
+                    for (let i = 0; i < winCondition; i++) {
+                        const cellIndex = row * boardSize + col + i;
+                        if (cells[cellIndex].textContent !== player) {
+                       //     let title = document.getElementById(row.toString()+'-'+i.toString());
+                         //   title.classList.add('winner');
+                            hasWin = false;
+                         
+                            break;
+                        }
+                    }
+                    if (hasWin) return true;
+                }
+            }
+    
+            // Check columns
+            for (let col = 0; col < boardSize; col++) {
+                for (let row = 0; row <= boardSize - winCondition; row++) {
+                    let hasWin = true;
+                    for (let i = 0; i < winCondition; i++) {
+                        const cellIndex = (row + i) * boardSize + col;
+                        if (cells[cellIndex].textContent !== player) {
+                            hasWin = false;
+                            break;
+                        }
+                    }
+                    if (hasWin) return true;
+                }
+            }
+    
+            // Check diagonals (top-left to bottom-right)
+            for (let row = 0; row <= boardSize - winCondition; row++) {
+                for (let col = 0; col <= boardSize - winCondition; col++) {
+                    let hasWin = true;
+                    for (let i = 0; i < winCondition; i++) {
+                        const cellIndex = (row + i) * boardSize + (col + i);
+                        if (cells[cellIndex].textContent !== player) {
+                            hasWin = false;
+                            break;
+                        }
+                    }
+                    if (hasWin) return true;
+                }
+            }
+    
+            // Check diagonals (top-right to bottom-left)
+            for (let row = 0; row <= boardSize - winCondition; row++) {
+                for (let col = winCondition - 1; col < boardSize; col++) {
+                    let hasWin = true;
+                    for (let i = 0; i < winCondition; i++) {
+                        const cellIndex = (row + i) * boardSize + (col - i);
+                        if (cells[cellIndex].textContent !== player) {
+                            hasWin = false;
+                            break;
+                        }
+                    }
+                    if (hasWin) return true;
+                }
+            }
+    
+            return false;
+        }  function updateScore(player) {
+            if (player === 'X') {
+                playerXScore++;
+                document.querySelector('.player-x-score').textContent = `Player x: ${playerXScore}`;
+            } else {
+                playerOScore++;
+                document.querySelector('.player-o-score').textContent = `Player o: ${playerOScore}`;
+            }
+        }
+    
+        function checkDrawCondition() {
+            return Array.from(cells).every(cell => {
+                return cell.textContent !== '';
+            });
+        }
+        function resetBoard() {
+            cells.forEach(cell => {
+                cell.textContent = '';
+            });
+        
+            currentPlayer = 'x';
+            gameEnded = false;
+        }
+        
+    </script>
+    
+    
+    
+    
+    
+</body>
+</html>
