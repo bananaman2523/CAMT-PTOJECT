@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe</title>
+    <style>
+          @font-face {
+            font-family: myfont;
+            src: url(C:\Users\mamay\Downloads\star_jedi.zip\starjedi);
+        }
+        @import url(https://allfont.net/allfont.css?fonts=star-jedi);
+        :root{
+            --clr-neon: #FFE81F;
+            --clr-bg : black ;
+--clr-neonone : rgb(255, 59, 59) ;
+            --clr-neontwo : #4343ff ;
+        }
+        .container{
+            background-image: url(back.fix.jpg);
+        }
+        td {
+            border-radius: 5px;
+            font-family: 'Star Jedi', arial;
+    font-size: 20px;
+            margin: 2px;
+           text-align: center;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+     width: 70px;
+     height: 70px;
+            cursor: pointer;
+            border: var(--clr-neon )2px solid;
+            box-shadow: inset 0 0 .5em var(--clr-neon),0 0 .5em var(--clr-neon)
+;
+        }
+        .reset-button {
+            display: block;
+            width: 100px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bord">
+            <table>
+                <tr>
+                    <td onclick="makeMove(0, 0)"></td>
+                    <td onclick="makeMove(0, 1)"></td>
+                    <td onclick="makeMove(0, 2)"></td>
+                    <td onclick="makeMove(0, 3)"></td>
+                    <td onclick="makeMove(0, 4)"></td>
+                </tr>
+                <tr>
+                    <td onclick="makeMove(1, 0)"></td>
+                    <td onclick="makeMove(1, 1)"></td>
+                    <td onclick="makeMove(1, 2)"></td>
+                    <td onclick="makeMove(1, 3)"></td>
+                    <td onclick="makeMove(1, 4)"></td>
+                </tr>
+                <tr>
+                    <td onclick="makeMove(2, 0)"></td>
+                    <td onclick="makeMove(2, 1)"></td>
+                    <td onclick="makeMove(2, 2)"></td>
+                    <td onclick="makeMove(2, 3)"></td>
+                    <td onclick="makeMove(2, 4)"></td>
+                </tr>
+                <tr>
+                    <td onclick="makeMove(3, 0)"></td>
+                    <td onclick="makeMove(3, 1)"></td>
+                    <td onclick="makeMove(3, 2)"></td>
+                    <td onclick="makeMove(3, 3)"></td>
+                    <td onclick="makeMove(3, 4)"></td>
+                </tr>
+                <tr>
+                    <td onclick="makeMove(4, 0)"></td>
+                    <td onclick="makeMove(4, 1)"></td>
+                    <td onclick="makeMove(4, 2)"></td>
+                    <td onclick="makeMove(4, 3)"></td>
+                    <td onclick="makeMove(4, 4)"></td>
+                </tr>
+            </table>
+        </div>
+        <p>Player 1 score: <span id="score1">0</span></p>
+        <p>Player 2 score: <span id="score2">0</span></p>
+        <div class="reset-button" onclick="resetBoard()">Reset Board</div>
+        <div class="reset-button" onclick="resetScore()">Reset Score</div>
+    </div>
+   
+   
+    <script>
+        // 5x5 array to represent the game board
+        var board = [
+            ['', '', '', '', ''],
+            ['', '', '', '', ''],
+            ['', '', '', '', ''],
+            ['', '', '', '', ''],
+            ['', '', '', '', '']
+        ];
+
+        var score1 =0;
+        var score2 =0;
+        var currentPlayer = 'X';
+        function randomFirstPlayer(){
+            const num1 = Math.floor((Math.random() * 2) + 1);
+            if(num1 == 1){
+                currentPlayer ='X';         
+            }else{
+                currentPlayer ='O';       
+            }
+            console.log(currentPlayer);
+         
+        }
+        function scorePlayer1() {
+            score1++;
+            console.log(score1);
+            document.getElementById('score1').textContent = score1;
+        }
+        function scorePlayer2() {
+    score2++;
+    console.log(score2);
+    document.getElementById('score2').textContent = score2;
+}
+
+
+        function resetScore() {
+      score1 = 0;
+      score2 = 0;
+      document.getElementById('score1').textContent = score1;
+      document.getElementById('score2').textContent = score2;
+    }
+
+        function makeMove(row, col) {
+            // Check if the cell is empty
+            if (board[row][col] === '') {
+                // Set the current player's symbol on the board
+                board[row][col] = currentPlayer;
+                // Update the cell with the current player's symbol
+                document.getElementsByTagName('td')[row * 5 + col].innerHTML = currentPlayer;
+                // Check for a win
+                if (checkWin(currentPlayer)) {
+                    alert(currentPlayer + ' wins!');
+                    if(currentPlayer ='X'){
+                        scorePlayer1();
+                    }else{
+                        scorePlayer2();
+                    }
+                    resetBoard();
+                } else if (checkDraw()) {
+                    alert('It\'s a draw!');
+                    resetBoard();
+                } else {
+                    // Switch players
+                    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                }
+            }
+        }
+
+        function checkWin(player) {
+    // Check rows
+    for (var i = 0; i < 5; i++) {
+        for (var j = 0; j <= 5 - 4; j++) {
+            if (
+                board[i][j] === player &&
+                board[i][j + 1] === player &&
+                board[i][j + 2] === player &&
+                board[i][j + 3] === player
+            ) {
+                return true;
+            }
+        }
+    }
+    // Check columns
+    for (var j = 0; j < 5; j++) {
+        for (var i = 0; i <= 5 - 4; i++) {
+            if (
+                board[i][j] === player &&
+                board[i + 1][j] === player &&
+                board[i + 2][j] === player &&
+                board[i + 3][j] === player
+            ) {
+                return true;
+            }
+        }
+    }
+    // Check diagonals (top-left to bottom-right)
+    for (var i = 0; i <= 5 - 4; i++) {
+        for (var j = 0; j <= 5 - 4; j++) {
+            if (
+                board[i][j] === player &&
+                board[i + 1][j + 1] === player &&
+                board[i + 2][j + 2] === player &&
+                board[i + 3][j + 3] === player
+            ) {
+                return true;
+            }
+        }
+    }
+    // Check diagonals (top-right to bottom-left)
+    for (var i = 0; i <= 5 - 4; i++) {
+        for (var j = 3; j < 5; j++) {
+            if (
+                board[i][j] === player &&
+                board[i + 1][j - 1] === player &&
+                board[i + 2][j - 2] === player &&
+                board[i + 3][j - 3] === player
+            ) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+        function checkDraw() {
+            for (var i = 0; i < 5; i++) {
+                for (var j = 0; j < 5; j++) {
+                    if (board[i][j] === '') {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        function resetBoard() {
+            
+            board = [
+                ['', '', '', '', ''],
+                ['', '', '', '', ''],
+                ['', '', '', '', ''],
+                ['', '', '', '', ''],
+                ['', '', '', '', '']
+            ];
+            var cells = document.getElementsByTagName('td');
+            for (var i = 0; i < cells.length; i++) {
+                cells[i].innerHTML = '';
+            }
+            randomFirstPlayer()
+        }
+    </script>
+</body>
+</html>

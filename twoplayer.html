@@ -58,18 +58,23 @@
      height: 70px;
             cursor: pointer;
             border: var(--clr-neon )2px solid;
-            color: red;
-            text-shadow: 0 0 .20em  rgba(255, 255, 255, 0.467),0 0 .50em var(--clr-neon)
+          
+          
    ;
 box-shadow: inset 0 0 .5em var(--clr-neon),0 0 .5em var(--clr-neon)
 ;
         }
-        .cell .x{
-            color: #ff005b;
+      .cell.red{
+            color: black;
+             -webkit-text-stroke: 1px rgb(255, 26, 26);
+    text-shadow: 0 0 20px #ff005b ;
         }
-        .cell .o{
-            color: blue;
+        .cell.blue{
+            color: black;
+             -webkit-text-stroke: 1px rgb(51, 0, 255);
+    text-shadow: 0 0 20px #1900ff ;
         }
+      
         .neon-text {
     font-family: 'star-jedi', sans-serif;
     font-size: 24px;
@@ -89,15 +94,8 @@ box-shadow: inset 0 0 .5em var(--clr-neon),0 0 .5em var(--clr-neon)
         .cell:hover {
             background-color: #ddd;
         }
-        .reset-button {
-            display: block;
-            width: 100px;
-            margin: 20px auto;
-            padding: 10px;
-            text-align: center;
-            background-color: #ccc;
-            cursor: pointer;
-        }
+   
+
         .player{
         
             font-family: 'Star Jedi', arial;
@@ -106,12 +104,12 @@ box-shadow: inset 0 0 .5em var(--clr-neon),0 0 .5em var(--clr-neon)
             flex-direction: row;
             align-items: center;
             color: #ddd;
-            margin-top: 50px;
+            margin-top: 25px;
             justify-content: space-between;
         }
         .player-x-score{
            font-size: 25px;
-           padding: 20px;
+           padding: 10px;
            border: 5px solid rgb(175, 175, 175);
        border-top:hidden ;
        border-bottom: hidden;
@@ -122,7 +120,7 @@ box-shadow: inset 0 0 .5em var(--clr-neon),0 0 .5em var(--clr-neon)
         }
         .player-o-score{
             font-size: 25px;
-            padding: 20px;
+            padding: 10px;
             border: 5px solid rgb(175, 175, 175);
        border-top:hidden ;
        border-bottom: hidden;
@@ -140,18 +138,104 @@ box-shadow: inset 0 0 .5em var(--clr-neon),0 0 .5em var(--clr-neon)
         }
 
 .results{
+    font-size: 30px;
     width: 200px;
 color: #000000;
 -webkit-text-stroke: 1px rgb(238, 255, 0);
 text-align: center;
   text-shadow: 0 0 .20em  rgba(255, 255, 255, 0.467),0 0 .50em var(--clr-neon)
  }
-        
+ .reset-button{
+    font-family: 'Star Jedi', Arial;
+    font-size: 20px;
+    border-radius: 10px;
+background-color: #000000;
+border: 2px solid yellow;
+color: #000000;
+-webkit-text-stroke: 1px rgb(238, 255, 0);
+box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
+text-shadow: 0 0 10px #e5ff00 ;
+cursor: pointer;
+       } 
+       .reset-button:hover {
+            color: #000000;
+            background-color: #FFE81F;
+        }
+        .reset-button:hover:before {
+            animation: none;
+            opacity: 0;
+        }
+        .music-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: 2px solid #FFE81F;
+            cursor: pointer;
+            z-index: 1;
+            color: #FFE81F;
+            font-size: 16px;
+            border-radius: 50%;
+            font-size: 30px;
+        }
+        .music-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: 2px solid var(--clr-neon);
+            cursor: pointer;
+            z-index: 1;
+            color: var(--clr-neon);
+            font-size: 16px;
+            border-radius: 50%;
+            font-size: 30px;
+            text-shadow: 0 0 .20em #fff7, 0 0 .10em var(--clr-neon);
+            box-shadow: inset 0 0 .5em var(--clr-neon), 0 0 .5em var(--clr-neon);
+        }
+
+        .music-button:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: 400% 400%;
+            z-index: -1;
+            filter: blur(20px);
+            animation: neon-gradient 2s ease-in-out infinite;
+        }
+        .music-button.paused:before {
+            background-color: transparent;
+        }
+
+        .music-button.paused:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 39px;
+            height: 2px;
+            background-color: var(--clr-neon);
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .music-button:hover {
+            color: #000000;
+            background-color: var(--clr-neon);
+        }
+
+        .music-button:hover:before {
+            animation: none;
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
   
     <div class="container">
+        <button onclick="toggleMusic()" class="music-button">♫</button>
       <div class="cursor-tacker">
 
       </div>
@@ -189,9 +273,10 @@ text-align: center;
         <div class="player">
             <div class="player-x-score">
             
-            sith (x)
+            PLAYER 1 (x)
             <div class="score x">
             0
+            
             </div>
             </div>
             <div id="result" class="results" >
@@ -199,27 +284,30 @@ text-align: center;
             </div>
             <div class="player-o-score">
                
-               jedi (o)
+                PLAYER 2 (o)
                 <div class="score o">
             0
                 </div>
             </div>
                         </div>
-    
-<!-- <div class="reset-button" onclick="resetBoard()">Reset Board</div>-->     
-    </div>
-   
+                        <audio id="player1win" src="player-1-wins.mp3"></audio>
+                        <audio id="player2win" src="player-2-wins.mp3"></audio>
 
+ <button class="reset-button" onclick="resetBoard()">reset Board</button>   
+    </div>
+   <audio></audio>
+   <audio id="background-music" src="imperial_march.mp3" autoplay loop></audio>
     <script>
         const cells = document.querySelectorAll('.cell');
         const boardSize = 5;
         const winCondition = 4;
         let currentPlayer = 'x';
-      
-  /// currentPlayer.style.color = "red";
+
         let gameEnded = false;
         let playerXScore = 0;
         let playerOScore = 0;
+        const player1Win =document.getElementById('player1win');
+        const player2Win =document.getElementById('player2win');
         cells.forEach(cell => {
             cell.addEventListener('click', handleCellClick);
         });
@@ -231,18 +319,33 @@ text-align: center;
     
             if (checkWinCondition(currentPlayer)) {
                 const winnerMessage = `Player ${currentPlayer} wins!`;/*       fix code (bi;;) display when win*/
+
     document.getElementById('result').textContent = winnerMessage;
                 
                 gameEnded = true;
+               
+                if (currentPlayer === 'x') {
+                    player1Win.play();
+                } else {
+                    player2Win.play();
+                }     
             } else if (checkDrawCondition()) {
                 const drawMessage = "Tie!";
     document.getElementById('result').textContent = drawMessage;
 
 
-                gameEnded = true;                                        /*       fix code (bill) display when draw*/
+                gameEnded = true;    
+                                        /*       fix code (bill) display when draw*/
             } else {
                 currentPlayer = currentPlayer === 'x' ? 'o' : 'x';
+      
             }
+           // Remove previous player's color class
+    this.classList.remove('red', 'blue');
+
+// Add current player's color class
+this.classList.add(currentPlayer === 'x' ? 'red' : 'blue');
+           
         }
     
         function checkWinCondition(player) {
@@ -314,6 +417,7 @@ text-align: center;
             if (player === 'X') {
                 playerXScore++;
                 document.querySelector('.player-x-score').textContent = `Player x: ${playerXScore}`;
+
             } else {
                 playerOScore++;
                 document.querySelector('.player-o-score').textContent = `Player o: ${playerOScore}`;
@@ -332,8 +436,21 @@ text-align: center;
         
             currentPlayer = 'x';
             gameEnded = false;
+            document.getElementById('result').textContent = ''; 
         }
-        
+        var audio = document.getElementById("background-music");
+        var musicButton = document.querySelector(".music-button");
+
+
+        function toggleMusic() {
+        if (audio.paused) {
+            audio.play();
+            musicButton.classList.remove("paused");
+        } else {
+            audio.pause();
+            musicButton.classList.add("paused");
+        }
+        }
     </script>
     
     

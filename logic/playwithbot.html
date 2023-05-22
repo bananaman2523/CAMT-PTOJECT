@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Score Game</title>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    .score-game {
+      display: inline-block;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .score-game h2 {
+      margin-top: 0;
+    }
+
+    .score-game p {
+      font-size: 18px;
+    }
+
+    .score-game button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="score-game">
+    <h2>Score Game</h2>
+    <p>Score: <span id="score">0</span></p>
+    <button onclick="incrementScore()">Increment Score</button>
+    <button onclick="resetScore()">Reset Score</button>
+  </div>
+
+  <script>
+    var score = 0;
+
+    function incrementScore() {
+      score++;
+      document.getElementById('score').textContent = score;
+    }
+
+    function resetScore() {
+      score = 0;
+      document.getElementById('score').textContent = score;
+    }
+  </script>
+</body>
+</html>

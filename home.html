@@ -5,124 +5,256 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://allfont.net/allfont.css?fonts=star-jedi" rel="stylesheet" type="text/css" />
-    <title>Document</title><!--  -->
+    <title>Document</title>
     <style>
         @font-face {
-            font-family: myfont;
-            src: url(C:\Users\mamay\Downloads\star_jedi.zip\starjedi);
+            font-family: 'Star Jedi';
+            src: url('https://allfont.net/allfont.css?fonts=star-jedi');
         }
-        @import url(https://allfont.net/allfont.css?fonts=star-jedi);
-        :root{
-            --clr-neon: #FFE81F;
-            --clr-bg : black ;
 
-            --clr-neontwo : #4D4DFF ;
+        :root {
+            --clr-neon: #FFE81F;
+            --clr-bg: black;
+            --clr-neontwo: #4D4DFF;
         }
-        body{
+
+        body {
             margin: 0;
         }
-        .container{
-            position: static;
-            display: flex; 
+
+        .container {
+            position: relative;
+            display: flex;
             width: 100%;
             height: 100vh;
             background-color: rgb(36, 36, 36);
-           justify-content: center;
-           background-image: url(back.fix.jpg);
-        
+            justify-content: center;
+            background-image: url(back.fix.jpg);
         }
-       
-        .content{
-           margin-top:100px;
-           display: flex;
-           flex-direction: column;
 
+        .content {
+            padding-top: 100px;
+            display: flex;
+            flex-direction: column;
         }
-        .mode{
+
+        .mode {
             margin-top: 30px;
             display: flex;
-           flex-direction: column;
-      align-items: center;
-      margin-bottom: 278px;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 278px;
         }
-.button{
-    font-family: 'Star Jedi', arial;
-    font-size: 20px;
-    color: var(--clr-neon);
-    text-decoration: none;
-   border: var(--clr-neon )5px solid;
-   padding: 10px;
-   margin: 5px;
-   width: 300px;
-   border-radius: 20px;
-   text-align: center;
-   text-shadow: 0 0 .20em  #fff7,0 0 .10em var(--clr-neon)
-   ;
-box-shadow: inset 0 0 .5em var(--clr-neon),0 0 .5em var(--clr-neon)
-;
 
-  
+        .button {
+            font-family: 'Star Jedi', Arial;
+            font-size: 20px;
+            color: var(--clr-neon);
+            text-decoration: none;
+            border: var(--clr-neon) 5px solid;
+            padding: 10px;
+            margin: 5px;
+            width: 300px;
+            border-radius: 20px;
+            text-align: center;
+            text-shadow: 0 0 0.20em #fff7, 0 0 0.10em var(--clr-neon);
+            box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
+            position: relative;
         }
 
         .button:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  
-  background-size: 400% 400%;
-  z-index: -1;
-  filter: blur(20px);
-  animation: neon-gradient 2s ease-in-out infinite;
-}
-@keyframes neon-gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: 400% 400%;
+            z-index: -1;
+            filter: blur(20px);
+            animation: neon-gradient 2s ease-in-out infinite;
+        }
 
-.button:hover {
-  color: #000000;
-  background-color: #FFE81F;
-}
+        @keyframes neon-gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
 
-.button:hover:before {
-  animation: none;
-  opacity: 0;
-}
-        .logo{
+        .button:hover {
+            color: #000000;
+            background-color: #FFE81F;
+        }
+
+        .button:hover:before {
+            animation: none;
+            opacity: 0;
+        }
+
+        .logo {
             width: 100%;
             height: auto;
         }
-  
 
+        .cursor-tracker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s;
+           
+        }
+        .music-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: 2px solid #FFE81F;
+            cursor: pointer;
+            z-index: 1;
+            color: #FFE81F;
+            font-size: 16px;
+            border-radius: 50%;
+            font-size: 30px;
+        }
+        .music-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: 2px solid var(--clr-neon);
+            cursor: pointer;
+            z-index: 1;
+            color: var(--clr-neon);
+            font-size: 16px;
+            border-radius: 50%;
+            font-size: 30px;
+            text-shadow: 0 0 .20em #fff7, 0 0 .10em var(--clr-neon);
+            box-shadow: inset 0 0 .5em var(--clr-neon), 0 0 .5em var(--clr-neon);
+        }
+
+        .music-button:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: 400% 400%;
+            z-index: -1;
+            filter: blur(20px);
+            animation: neon-gradient 2s ease-in-out infinite;
+        }
+        .music-button.paused:before {
+            background-color: transparent;
+        }
+
+        .music-button.paused:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 39px;
+            height: 2px;
+            background-color: var(--clr-neon);
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .music-button:hover {
+            color: #000000;
+            background-color: var(--clr-neon);
+        }
+
+        .music-button:hover:before {
+            animation: none;
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
- <div class="container">
+  <audio id="sound-move" src="fly-by-4.mp3" type="audio/mpeg" autoplay loop></audio> 
 
-        
-   
-    <div class="content">
-        <div class="logo">
-<img src="logo.png" style="width: 100%;
-height: 200px;">
-        </div>
-        <div class="mode">
-          <a href="#" class="button">1 PLAYER</a>
-          <a href="#" class="button">2 PLAYER</a>
-
+    <div class="cursor-tracker">
+        <img src="pngegg (2).png" style="width: 100%; height: 60px;">
     </div>
+    <div class="container">
+        <div class="content">
+          <button onclick="toggleMusic()" class="music-button">♫</button>
+     
+            <div class="logo">
+                <img src="logo.png" style="width: 100%; height: 200px;">
+            </div>
+            <div class="mode">
+                <a href="#" class="button">1 PLAYER</a>
+                <a href="twoplayer.html" class="button">2 PLAYER</a>
+            </div>
+            <audio id="background-music" src="StarWarMusic.mp3" autoplay loop></audio>
+        </div>
+    </div>
+  
+    <script>
+        var audio = document.getElementById("background-music");
+       
+        var musicButton = document.querySelector(".music-button");
 
 
- </div>
+        function toggleMusic() {
+        if (audio.paused) {
+            audio.play();
+            musicButton.classList.remove("paused");
+        } else {
+            audio.pause();
+            musicButton.classList.add("paused");
+        }
+        }
+      
+
+        const tracker = document.querySelector('.cursor-tracker');
+        const trackerSize = tracker.offsetWidth;
+        let trackerX = 0;
+        let trackerY = 0;
+        let mouseX = 0;
+        let mouseY = 0;
+        const speed = 0.05;
+        let isVisible = false;
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isVisible) {
+                isVisible = true;
+                tracker.style.opacity = 1;
+                updatePosition();
+            }
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        const updatePosition = () => {
+            const distanceX = mouseX - (trackerX + trackerSize / 2);
+            const distanceY = mouseY - (trackerY + trackerSize / 2);
+
+            trackerX += distanceX * speed;
+            trackerY += distanceY * speed;
+
+            tracker.style.transform = `translate(${trackerX}px, ${trackerY}px)`;
+            CursorSoundMove(); // Call the CursorSoundMove function to play the sound effect
+            requestAnimationFrame(updatePosition);
+        };
+        const soundEffect = new Audio('fly-by-4.mp3');
+        soundEffect.volume = 10; 
+        document.addEventListener('mousemove', CursorSoundMove);
+        function CursorSoundMove() {
+      /*      const soundEffect = document.getElementById('sound-move');
+            soundEffect.currentTime = 1; // Reset the sound to the beginning
+            soundEffect.play();*/
+        }
+    </script>
 </body>
 </html>
