@@ -174,6 +174,7 @@ cursor: pointer;
             opacity: 0;
         }
         .reset-point{
+            margin-left: 10px;
     font-family: 'Star Jedi', Arial;
     font-size: 20px;
     border-radius: 10px;
@@ -185,13 +186,14 @@ box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
 text-shadow: 0 0 10px #e5ff00 ;
 cursor: pointer;
        } 
-       .reset-poitn:hover {
-            color: #000000;
-            background-color: #FFE81F;
-        }
+      
         .reset-point:hover:before {
             animation: none;
             opacity: 0;
+        }
+        .reset-point:hover {
+            color: #000000;
+            background-color: #FFE81F;
         }
         .music-point {
             position: absolute;
@@ -258,11 +260,20 @@ cursor: pointer;
             animation: none;
             opacity: 0;
         }
+        .winner{
+            background-color: white;
+            color: black;
+             -webkit-text-stroke: 1px rgb(255, 251, 0);
+    text-shadow: 0 0 20px #fff700 ;
+        }
+
+
     </style>
 </head>
 <body>
   
     <div class="container">
+      
         <button onclick="toggleMusic()" class="music-button">♫</button>
       <div class="cursor-tacker">
 
@@ -302,7 +313,7 @@ cursor: pointer;
             <div class="player-x-score">
             
             PLAYER 1 (x)
-            <div id="score1" class="score x">
+            <div id="score1" class="score x" >
             0
             
             </div>
@@ -313,13 +324,14 @@ cursor: pointer;
             <div  class="player-o-score">
                
                 PLAYER 2 (o)
-                <div id="score2" class="score o">
-            0
+                <div id="score2" class="score o" >
+                   0
                 </div>
             </div>
                         </div>
                         <audio id="player1win" src="player-1-wins.mp3"></audio>
                         <audio id="player2win" src="player-2-wins.mp3"></audio>
+                        <audio id="tie" src="saber.mp3"></audio>
 <div class="reset">
     <button class="reset-button" onclick="resetBoard()">reset Board</button>   
     <button class="reset-point" onclick="resetPoint()">reset Point</button>
@@ -335,14 +347,25 @@ cursor: pointer;
         var currentPlayer = 'x';
 
         let gameEnded = false;
+        let gameover = 5 ;
         let playerXScore = 0;
         let playerOScore = 0;
         const player1Win =document.getElementById('player1win');
         const player2Win =document.getElementById('player2win');
+const tie = document.getElementById('tie');
+
+        const score1Element = document.getElementById('score1');
+        const score2Element = document.getElementById('score2');
         cells.forEach(cell => {
             cell.addEventListener('click', handleCellClick);
         });
-    
+        function randomFirstPlayer(){
+
+            const num1 = Math.floor(Math.random() * 2) + 1;
+  currentPlayer = num1 === 1 ? 'x' : 'o';
+  console.log(currentPlayer);
+         
+        }
         function handleCellClick() {
             if (gameEnded || this.textContent !== '') return;
     
@@ -357,26 +380,29 @@ cursor: pointer;
                
                 if (currentPlayer === 'x') {
                     player1Win.play();
+                    playerXScore++;
+                    score1Element.textContent = playerXScore;
                 } else {
                     player2Win.play();
+                    playerOScore++;
+                    score2Element.textContent = playerOScore;
                 }     
             } else if (checkDrawCondition()) {
                 const drawMessage = "Tie!";
     document.getElementById('result').textContent = drawMessage;
-
+tie.play();
 
                 gameEnded = true;    
                                         /*       fix code (bill) display when draw*/
            } else {
-    currentPlayer = currentPlayer === 'o' ? 'x' : 'o';
+    currentPlayer = currentPlayer === 'x' ? 'o' : 'x';
   }
 
   // Remove previous player's color class
   this.classList.remove('red', 'blue');
 
-  // Add current player's color class
-  this.classList.add(currentPlayer === 'x' ? 'red' : 'blue')
-           // Remove previous player's color class
+// Add current player's color class
+this.classList.add(currentPlayer === 'x' ? 'blue' : 'red');
         
 
 // Add current player's color class
@@ -385,6 +411,7 @@ cursor: pointer;
         }
     
         function checkWinCondition(player) {
+            
             // Check rows
             for (let row = 0; row < boardSize; row++) {
                 for (let col = 0; col <= boardSize - winCondition; col++) {
@@ -394,6 +421,7 @@ cursor: pointer;
                         if (cells[cellIndex].textContent !== player) {
                        //     let title = document.getElementById(row.toString()+'-'+i.toString());
                          //   title.classList.add('winner');
+                       
                             hasWin = false;
                          
                             break;
@@ -416,6 +444,7 @@ cursor: pointer;
                     }
                     if (hasWin) return true;
                 }
+               
             }
     
             // Check diagonals (top-left to bottom-right)
@@ -498,13 +527,14 @@ cursor: pointer;
             }else{
                 currentPlayer ='o';       
             }
+
             console.log(currentPlayer);
           
         }
         function scorePlayer1() {
             score1++;
             console.log(score1);
-            document.getElementById('score1').textContent = score1;
+           document.getElementById('result').textContent = winnerMessage;
         }
         function scorePlayer2() {
             score2++;
@@ -512,11 +542,13 @@ cursor: pointer;
             document.getElementById('score2').textContent = score2;
         }
 
-        function resetScore() {
-      score1 = 0;
-      score2 = 0;
-      document.getElementById('score1').textContent = score1;
-      document.getElementById('score2').textContent = score2;
+        function resetPoint() {
+            playerXScore = 0;
+                    score1Element.textContent = playerXScore;
+                    playerYScore = 0;
+                    score2Element.textContent = playerYScore;
+                    
+    document.getElementById('result').textContent = "";
     }
     </script>
     

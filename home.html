@@ -180,7 +180,7 @@
     </style>
 </head>
 <body>
-  <audio id="sound-move" src="fly-by-4.mp3" type="audio/mpeg" autoplay loop></audio> 
+  <audio id="sound-move" src="fly-by-4.mp3" type="audio/mpeg" ></audio> 
 
     <div class="cursor-tracker">
         <img src="pngegg (2).png" style="width: 100%; height: 60px;">
@@ -247,7 +247,7 @@
             CursorSoundMove(); // Call the CursorSoundMove function to play the sound effect
             requestAnimationFrame(updatePosition);
         };
-        const soundEffect = new Audio('fly-by-4.mp3');
+       
         soundEffect.volume = 10; 
         document.addEventListener('mousemove', CursorSoundMove);
         function CursorSoundMove() {
