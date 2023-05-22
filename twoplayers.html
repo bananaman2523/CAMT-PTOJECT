@@ -14,8 +14,28 @@
 --clr-neonone : rgb(255, 59, 59) ;
             --clr-neontwo : #4343ff ;
         }
+        body{
+            margin: 0;
+        }
         .container{
             background-image: url(back.fix.jpg);
+            width: 100%;
+            height: 100vh;
+            position: static;
+            display: flex; 
+            flex-direction: column;
+           justify-content: center;
+        }
+        .bord{
+                   
+       
+      
+            gap: 2px;
+            width: auto;
+            height: auto;
+            margin: 0 auto;
+            margin-top: 30px;
+            justify-content: center;
         }
         td {
             border-radius: 5px;
@@ -34,6 +54,9 @@
             box-shadow: inset 0 0 .5em var(--clr-neon),0 0 .5em var(--clr-neon)
 ;
         }
+        td:hover {
+            background-color: #ddd;
+        }
         .reset-button {
             display: block;
             width: 100px;
@@ -43,6 +66,25 @@
             background-color: #ccc;
             cursor: pointer;
         }
+        .neon-text {
+    font-family: 'star-jedi', sans-serif;
+    font-size: 24px;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #4D4DFF, 0 0 40px #4D4DFF, 0 0 55px #4D4DFF, 0 0 75px #4D4DFF;
+    animation: neon-glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes neon-glow {
+    from {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #4D4DFF, 0 0 40px #4D4DFF, 0 0 55px #4D4DFF, 0 0 75px #4D4DFF;
+    }
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #FFE81F, 0 0 40px #FFE81F, 0 0 55px #FFE81F, 0 0 75px #FFE81F;
+    }
+}
+.player{
+    width: auto;
+    background-color: #4343ff;
+}
     </style>
 </head>
 <body>
@@ -86,10 +128,21 @@
                 </tr>
             </table>
         </div>
-        <p>Player 1 score: <span id="score1">0</span></p>
-        <p>Player 2 score: <span id="score2">0</span></p>
-        <div class="reset-button" onclick="resetBoard()">Reset Board</div>
-        <div class="reset-button" onclick="resetScore()">Reset Score</div>
+        <div class="player">
+            <div class="player x">
+                <p>Player 1 score: <span id="score1">0</span></p>
+            </div>
+           <div class="player o">
+            <p>Player 2 score: <span id="score2">0</span></p>
+           </div>
+           
+        </div>
+        
+        <div class="buttons">
+            <div class="reset-button" onclick="resetBoard()">Reset Board</div>
+            <div class="reset-button" onclick="resetScore()">Reset Score</div>
+        </div>
+       
     </div>
    
    
@@ -105,13 +158,13 @@
 
         var score1 =0;
         var score2 =0;
-        var currentPlayer = 'X';
+        var currentPlayer = 'x';
         function randomFirstPlayer(){
             const num1 = Math.floor((Math.random() * 2) + 1);
             if(num1 == 1){
-                currentPlayer ='X';         
+                currentPlayer ='x';         
             }else{
-                currentPlayer ='O';       
+                currentPlayer ='o';       
             }
             console.log(currentPlayer);
          
@@ -145,7 +198,7 @@
                 // Check for a win
                 if (checkWin(currentPlayer)) {
                     alert(currentPlayer + ' wins!');
-                    if(currentPlayer ='X'){
+                    if(currentPlayer ='x'){
                         scorePlayer1();
                     }else{
                         scorePlayer2();
@@ -156,7 +209,7 @@
                     resetBoard();
                 } else {
                     // Switch players
-                    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                    currentPlayer = currentPlayer === 'x' ? 'o' : 'x';
                 }
             }
         }
