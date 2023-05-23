@@ -267,13 +267,35 @@ cursor: pointer;
     text-shadow: 0 0 20px #fff700 ;
         }
 
+        .back-homepage{
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: transparent;
+            border: 2px solid var(--clr-neon);
+            cursor: pointer;
+            z-index: 1;
+            color: var(--clr-neon);
+            font-size: 16px;
+            border-radius: 15%;
+            font-size: 25px;
+            text-shadow: 0 0 .20em #fff7, 0 0 .10em var(--clr-neon);
+            box-shadow: inset 0 0 .5em var(--clr-neon), 0 0 .5em var(--clr-neon);
+        }
+        .back-homepage:hover {
+            color: #000000;
+            background-color: var(--clr-neon);
+        }
+
+
+
 
     </style>
 </head>
 <body>
   
     <div class="container">
-      
+        <button onclick="window.location.href = 'home.html';" class="back-homepage">Back</button>      
         <button onclick="toggleMusic()" class="music-button">♫</button>
       <div class="cursor-tacker">
 
