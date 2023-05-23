@@ -12,26 +12,29 @@
       src: url(C:\Users\mamay\Downloads\star_jedi.zip\starjedi);
     }
     @import url(https://allfont.net/allfont.css?fonts=star-jedi);
-    :root {
-      --clr-neon: #ffe81f;
-      --clr-bg: black;
-      --clr-neonone: rgb(255, 59, 59);
-      --clr-neontwo: #4343ff;
+    
+    :root{
+      --clr-neon: #FFE81F;
+      --clr-bg : black ;
+      --clr-neonone : rgb(255, 59, 59) ;
+      --clr-neontwo : #4343ff ;
     }
-    body {
+    body{
       margin: 0;
     }
-    .container {
+    .container{
       position: static;
-      display: flex;
+      display: flex; 
       flex-direction: column;
       width: 100%;
       height: 100vh;
       justify-content: center;
       background-image: url(back.fix.jpg);
       align-items: center;
+
     }
     .content {
+
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: repeat(5, 1fr);
@@ -42,9 +45,10 @@
       margin-top: 30px;
       justify-content: center;
     }
+
     .cell {
       border-radius: 5px;
-      font-family: "Star Jedi", arial;
+      font-family: 'Star Jedi', arial;
       font-size: 20px;
       margin: 2px;
       display: flex;
@@ -55,156 +59,244 @@
       width: 70px;
       height: 70px;
       cursor: pointer;
-      border: var(--clr-neon) 2px solid;
-      box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
+      border: var(--clr-neon )2px solid;
+      box-shadow: inset 0 0 .5em var(--clr-neon),0 0 .5em var(--clr-neon);
       color: black;
       -webkit-text-stroke: 1px rgb(255, 255, 255);
-      text-shadow: 0 0 20px #ffffff;
+      text-shadow: 0 0 20px #ffffff ;
     }
+    .red{
+      color: black;
+      -webkit-text-stroke: 1px rgb(255, 26, 26);
+      text-shadow: 0 0 20px #ff005b ;
+    }
+    .blue{
+      color: black;
+      -webkit-text-stroke: 1px rgb(51, 0, 255);
+      text-shadow: 0 0 20px #1900ff ;
+    }
+
+    .neon-text {
+      font-family: 'star-jedi', sans-serif;
+      font-size: 24px;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #4D4DFF, 0 0 40px #4D4DFF, 0 0 55px #4D4DFF, 0 0 75px #4D4DFF;
+      animation: neon-glow 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes neon-glow {
+    from {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #4D4DFF, 0 0 40px #4D4DFF, 0 0 55px #4D4DFF, 0 0 75px #4D4DFF;
+    }
+    to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #FFE81F, 0 0 40px #FFE81F, 0 0 55px #FFE81F, 0 0 75px #FFE81F;
+    }
+    }
+
     .cell:hover {
-        background-color: #ddd;
+      background-color: #ddd;
     }
-    .player {
-        font-family: "Star Jedi", arial;
-        font-size: 20px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        color: #ddd;
-        margin-top: 25px;
-        justify-content: space-between;
+
+
+    .player{
+
+      font-family: 'Star Jedi', arial;
+      font-size: 20px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      color: #ddd;
+      margin-top: 25px;
+      justify-content: space-between;
     }
-    .player-x-score {
-        font-size: 25px;
-        padding: 10px;
-        border: 5px solid rgb(175, 175, 175);
-        border-top: hidden;
-        border-bottom: hidden;
-        border-left: hidden;
-        color: black;
-        -webkit-text-stroke: 1px rgb(255, 26, 26);
-        text-shadow: 0 0 20px #ff005b;
+    .player-x-score{
+      font-size: 25px;
+      padding: 10px;
+      border: 5px solid rgb(175, 175, 175);
+      border-top:hidden ;
+      border-bottom: hidden;
+      border-left: hidden;
+      color: black;
+      -webkit-text-stroke: 1px rgb(255, 26, 26);
+      text-shadow: 0 0 20px #ff005b ;
     }
-    .player-o-score {
-        font-size: 25px;
-        padding: 10px;
-        border: 5px solid rgb(175, 175, 175);
-        border-top: hidden;
-        border-bottom: hidden;
-        border-right: hidden;
-        -webkit-text-stroke: 1px rgb(0, 8, 255);
-        color: rgb(0, 0, 0);
-        text-shadow: 0 0 20px #0099ff;
+    .player-o-score{
+      font-size: 25px;
+      padding: 10px;
+      border: 5px solid rgb(175, 175, 175);
+      border-top:hidden ;
+      border-bottom: hidden;
+      border-right: hidden;
+      -webkit-text-stroke: 1px rgb(0, 8, 255);
+      color: rgb(0, 0, 0);
+      text-shadow: 0 0 20px #0099ff ;
     }
-    .score {
-        font-size: 40px;
-        padding: 20px;
-        margin-top: 5px;
-        text-align: center;
+    .score{
+      font-size: 40px;
+      padding: 20px;
+      margin-top: 5px;
+      text-align: center;
+
     }
-    .results {
-        font-size: 30px;
-        width: 200px;
-        color: #000000;
-        -webkit-text-stroke: 1px rgb(255, 255, 255);
-        text-align: center;
-        text-shadow: 0 0 20px #ffffff;
+
+    .results{
+      font-size: 30px;
+      width: 200px;
+      color: #000000;
+      -webkit-text-stroke: 1px rgb(255, 255, 255);
+      text-align: center;
+      text-shadow: 0 0 20px #ffffff ;
     }
-    .reset {
-        margin-top: 5px;
-        width: auto;
-        height: auto;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+    .reset{
+      margin-top: 5px;
+      width: auto;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
     }
-    .reset-button {
-        font-family: "Star Jedi", Arial;
-        font-size: 20px;
-        border-radius: 10px;
-        background-color: #000000;
-        border: 2px solid yellow;
-        color: #000000;
-        -webkit-text-stroke: 1px rgb(238, 255, 0);
-        box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
-        text-shadow: 0 0 10px #e5ff00;
-        cursor: pointer;
-    }
+    .reset-button{
+      font-family: 'Star Jedi', Arial;
+      font-size: 20px;
+      border-radius: 10px;
+      background-color: #000000;
+      border: 2px solid yellow;
+      color: #000000;
+      -webkit-text-stroke: 1px rgb(238, 255, 0);
+      box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
+      text-shadow: 0 0 10px #e5ff00 ;
+      cursor: pointer;
+    } 
     .reset-button:hover {
-        color: #000000;
-        background-color: #ffe81f;
+      color: #000000;
+      background-color: #FFE81F;
     }
-    .reset-point {
-        margin-left: 10px;
-        font-family: "Star Jedi", Arial;
-        font-size: 20px;
-        border-radius: 10px;
-        background-color: #000000;
-        border: 2px solid yellow;
-        color: #000000;
-        -webkit-text-stroke: 1px rgb(238, 255, 0);
-        box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
-        text-shadow: 0 0 10px #e5ff00;
-        cursor: pointer;
+    .reset-button:hover:before {
+      animation: none;
+      opacity: 0;
     }
-    .reset-point:hover{
-        color: #000000;
-        background-color: #ffe81f;
+    .reset-point{
+      margin-left: 10px;
+      font-family: 'Star Jedi', Arial;
+      font-size: 20px;
+      border-radius: 10px;
+      background-color: #000000;
+      border: 2px solid yellow;
+      color: #000000;
+      -webkit-text-stroke: 1px rgb(238, 255, 0);
+      box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
+      text-shadow: 0 0 10px #e5ff00 ;
+      cursor: pointer;
+    } 
+
+    .reset-point:hover:before {
+      animation: none;
+      opacity: 0;
+    }
+    .reset-point:hover {
+      color: #000000;
+      background-color: #FFE81F;
+    }
+    .music-point {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: transparent;
+      border: 2px solid #FFE81F;
+      cursor: pointer;
+      z-index: 1;
+      color: #FFE81F;
+      font-size: 16px;
+      border-radius: 50%;
+      font-size: 30px;
     }
     .music-button {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: transparent;
-        border: 2px solid var(--clr-neon);
-        cursor: pointer;
-        z-index: 1;
-        color: var(--clr-neon);
-        font-size: 16px;
-        border-radius: 50%;
-        font-size: 30px;
-        text-shadow: 0 0 0.2em #fff7, 0 0 0.1em var(--clr-neon);
-        box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
-    }    
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: transparent;
+      border: 2px solid var(--clr-neon);
+      cursor: pointer;
+      z-index: 1;
+      color: var(--clr-neon);
+      font-size: 16px;
+      border-radius: 50%;
+      font-size: 30px;
+      text-shadow: 0 0 .20em #fff7, 0 0 .10em var(--clr-neon);
+      box-shadow: inset 0 0 .5em var(--clr-neon), 0 0 .5em var(--clr-neon);
+    }
+
+    .music-button:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: 400% 400%;
+      z-index: -1;
+      filter: blur(20px);
+      animation: neon-gradient 2s ease-in-out infinite;
+    }
+    .music-button.paused:before {
+      background-color: transparent;
+    }
+
     .music-button.paused:after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 39px;
-        height: 2px;
-        background-color: var(--clr-neon);
-        transform: translate(-50%, -50%) rotate(45deg);
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 39px;
+      height: 2px;
+      background-color: var(--clr-neon);
+      transform: translate(-50%, -50%) rotate(45deg);
     }
+
     .music-button:hover {
-        color: #000000;
-        background-color: var(--clr-neon);
+      color: #000000;
+      background-color: var(--clr-neon);
     }
-    .winner {
-        background-color: white;
-        color: black;
-        -webkit-text-stroke: 1px rgb(255, 251, 0);
-        text-shadow: 0 0 20px #fff700;
+
+    .music-button:hover:before {
+      animation: none;
+      opacity: 0;
     }
-    .back-homepage {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        background-color: transparent;
-        border: 2px solid var(--clr-neon);
-        cursor: pointer;
-        z-index: 1;
-        color: var(--clr-neon);
-        font-size: 16px;
-        border-radius: 15%;
-        font-size: 25px;
-        text-shadow: 0 0 0.2em #fff7, 0 0 0.1em var(--clr-neon);
-        box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
+    .winner{
+      background-color: white;
+      color: black;
+      -webkit-text-stroke: 1px rgb(255, 251, 0);
+      text-shadow: 0 0 20px #fff700 ;
+    }
+    .whit-black{
+      color: black;
+      -webkit-text-stroke: 1px rgb(255, 255, 255);
+      text-shadow: 0 0 20px #ffffff ;
+    }
+    .back-homepage{
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: transparent;
+      border: 2px solid var(--clr-neon);
+      cursor: pointer;
+      z-index: 1;
+      color: var(--clr-neon);
+      font-size: 16px;
+      border-radius: 15%;
+      font-size: 25px;
+      text-shadow: 0 0 .20em #fff7, 0 0 .10em var(--clr-neon);
+      box-shadow: inset 0 0 .5em var(--clr-neon), 0 0 .5em var(--clr-neon);
     }
     .back-homepage:hover {
-        color: #000000;
-        background-color: var(--clr-neon);
+      color: #000000;
+      background-color: var(--clr-neon);
     }
+    .turn{
+      color: black;
+      -webkit-text-stroke: 1px rgb(255, 251, 0);
+      text-shadow: 0 0 20px #fff700 ;
+    }
+
   </style>
   <body>
     <div class="container">
