@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+  </head>
+  <style>
+    @font-face {
+      font-family: myfont;
+      src: url(C:\Users\mamay\Downloads\star_jedi.zip\starjedi);
+    }
+    @import url(https://allfont.net/allfont.css?fonts=star-jedi);
+    :root {
+      --clr-neon: #ffe81f;
+      --clr-bg: black;
+      --clr-neonone: rgb(255, 59, 59);
+      --clr-neontwo: #4343ff;
+    }
+    body {
+      margin: 0;
+    }
+    .container {
+      position: static;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100vh;
+      justify-content: center;
+      background-image: url(back.fix.jpg);
+      align-items: center;
+    }
+    .content {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      gap: 2px;
+      width: auto;
+      height: auto;
+      margin: 0 auto;
+      margin-top: 30px;
+      justify-content: center;
+    }
+    .cell {
+      border-radius: 5px;
+      font-family: "Star Jedi", arial;
+      font-size: 20px;
+      margin: 2px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      width: 70px;
+      height: 70px;
+      cursor: pointer;
+      border: var(--clr-neon) 2px solid;
+      box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
+      color: black;
+      -webkit-text-stroke: 1px rgb(255, 255, 255);
+      text-shadow: 0 0 20px #ffffff;
+    }
+    .cell:hover {
+        background-color: #ddd;
+    }
+    .player {
+        font-family: "Star Jedi", arial;
+        font-size: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: #ddd;
+        margin-top: 25px;
+        justify-content: space-between;
+    }
+    .player-x-score {
+        font-size: 25px;
+        padding: 10px;
+        border: 5px solid rgb(175, 175, 175);
+        border-top: hidden;
+        border-bottom: hidden;
+        border-left: hidden;
+        color: black;
+        -webkit-text-stroke: 1px rgb(255, 26, 26);
+        text-shadow: 0 0 20px #ff005b;
+    }
+    .player-o-score {
+        font-size: 25px;
+        padding: 10px;
+        border: 5px solid rgb(175, 175, 175);
+        border-top: hidden;
+        border-bottom: hidden;
+        border-right: hidden;
+        -webkit-text-stroke: 1px rgb(0, 8, 255);
+        color: rgb(0, 0, 0);
+        text-shadow: 0 0 20px #0099ff;
+    }
+    .score {
+        font-size: 40px;
+        padding: 20px;
+        margin-top: 5px;
+        text-align: center;
+    }
+    .results {
+        font-size: 30px;
+        width: 200px;
+        color: #000000;
+        -webkit-text-stroke: 1px rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 0 0 20px #ffffff;
+    }
+    .reset {
+        margin-top: 5px;
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .reset-button {
+        font-family: "Star Jedi", Arial;
+        font-size: 20px;
+        border-radius: 10px;
+        background-color: #000000;
+        border: 2px solid yellow;
+        color: #000000;
+        -webkit-text-stroke: 1px rgb(238, 255, 0);
+        box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
+        text-shadow: 0 0 10px #e5ff00;
+        cursor: pointer;
+    }
+    .reset-button:hover {
+        color: #000000;
+        background-color: #ffe81f;
+    }
+    .reset-point {
+        margin-left: 10px;
+        font-family: "Star Jedi", Arial;
+        font-size: 20px;
+        border-radius: 10px;
+        background-color: #000000;
+        border: 2px solid yellow;
+        color: #000000;
+        -webkit-text-stroke: 1px rgb(238, 255, 0);
+        box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
+        text-shadow: 0 0 10px #e5ff00;
+        cursor: pointer;
+    }
+    .reset-point:hover{
+        color: #000000;
+        background-color: #ffe81f;
+    }
+    .music-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: transparent;
+        border: 2px solid var(--clr-neon);
+        cursor: pointer;
+        z-index: 1;
+        color: var(--clr-neon);
+        font-size: 16px;
+        border-radius: 50%;
+        font-size: 30px;
+        text-shadow: 0 0 0.2em #fff7, 0 0 0.1em var(--clr-neon);
+        box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
+    }    
+    .music-button.paused:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 39px;
+        height: 2px;
+        background-color: var(--clr-neon);
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+    .music-button:hover {
+        color: #000000;
+        background-color: var(--clr-neon);
+    }
+    .winner {
+        background-color: white;
+        color: black;
+        -webkit-text-stroke: 1px rgb(255, 251, 0);
+        text-shadow: 0 0 20px #fff700;
+    }
+    .back-homepage {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: transparent;
+        border: 2px solid var(--clr-neon);
+        cursor: pointer;
+        z-index: 1;
+        color: var(--clr-neon);
+        font-size: 16px;
+        border-radius: 15%;
+        font-size: 25px;
+        text-shadow: 0 0 0.2em #fff7, 0 0 0.1em var(--clr-neon);
+        box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
+    }
+    .back-homepage:hover {
+        color: #000000;
+        background-color: var(--clr-neon);
+    }
+  </style>
+  <body>
+    <div class="container">
+      <button onclick="window.location.href = 'home.html';" class="back-homepage">
+        Back
+      </button>
+      <button onclick="toggleMusic()" class="music-button">♫</button>
+      <div class="cursor-tacker"></div>
+      <div class="board">
+        <div class="content">
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+        </div>
+      </div>
+      <div class="player">
+        <div class="player-x-score">
+          player 1 (x)
+          <div id="score1" class="score x">0</div>
+        </div>
+        <div id="result" class="results"></div>
+        <div class="player-o-score">
+          player 2 (o)
+          <div id="score2" class="score o">0</div>
+        </div>
+      </div>
+      <audio id="player1win" src="player-1-wins.mp3"></audio>
+      <audio id="player2win" src="player-2-wins.mp3"></audio>
+      <audio id="tie" src="saber.mp3"></audio>
+      <div class="reset">
+        <button class="reset-button" onclick="resetBoard()">reset Board</button>
+        <button class="reset-point" onclick="resetPoint()">reset Point</button>
+      </div>
+    </div>
+    <audio id="background-music" src="imperial_march.mp3" autoplay loop></audio>
+    <script>
+        var audio = document.getElementById("background-music");
+        var musicButton = document.querySelector(".music-button");
+
+        function toggleMusic() {
+            if (audio.paused) {
+            audio.play();
+            musicButton.classList.remove("paused");
+            } else {
+            audio.pause();
+            musicButton.classList.add("paused");
+            }
+        }
+    </script>
+  </body>
+</html>

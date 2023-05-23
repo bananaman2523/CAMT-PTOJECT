@@ -1,255 +1,182 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Tic Tac Toe</title>
     <style>
-          @font-face {
-            font-family: myfont;
-            src: url(C:\Users\mamay\Downloads\star_jedi.zip\starjedi);
-        }
-        @import url(https://allfont.net/allfont.css?fonts=star-jedi);
-        :root{
-            --clr-neon: #FFE81F;
-            --clr-bg : black ;
---clr-neonone : rgb(255, 59, 59) ;
-            --clr-neontwo : #4343ff ;
-        }
-        body{
-            margin: 0;
-        }
-         .container{
-            position: static;
-            display: flex; 
-            flex-direction: column;
-            width: 100%;
-            height: 100vh;
-           
-           justify-content: center;
-           background-image: url(back.fix.jpg);
-           
-           align-items: center;
-       
-        
-        }
-        .content {
-            
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: repeat(5, 1fr);
-            gap: 2px;
-            width: auto;
-            height: auto;
-            margin: 0 auto;
-            margin-top: 30px;
-            justify-content: center;
-        }
+      @font-face {
+        font-family: myfont;
+        src: url(C:\Users\mamay\Downloads\star_jedi.zip\starjedi);
+      }
+      @import url(https://allfont.net/allfont.css?fonts=star-jedi);
+      :root {
+        --clr-neon: #ffe81f;
+        --clr-bg: black;
+        --clr-neonone: rgb(255, 59, 59);
+        --clr-neontwo: #4343ff;
+      }
+      body {
+        margin: 0;
+      }
+      .container {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
 
-        .cell {
-            border-radius: 5px;
-            font-family: 'Star Jedi', arial;
-    font-size: 20px;
-            margin: 2px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            font-weight: bold;
-     width: 70px;
-     height: 70px;
-            cursor: pointer;
-            border: var(--clr-neon )2px solid;
-          
-          
-   ;
-box-shadow: inset 0 0 .5em var(--clr-neon),0 0 .5em var(--clr-neon)
-;
-        }
-      .red{
-            color: black;
-             -webkit-text-stroke: 1px rgb(255, 26, 26);
-    text-shadow: 0 0 20px #ff005b ;
-        }
-        .blue{
-            color: black;
-             -webkit-text-stroke: 1px rgb(51, 0, 255);
-    text-shadow: 0 0 20px #1900ff ;
-        }
-      
-        .neon-text {
-    font-family: 'star-jedi', sans-serif;
-    font-size: 24px;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #4D4DFF, 0 0 40px #4D4DFF, 0 0 55px #4D4DFF, 0 0 75px #4D4DFF;
-    animation: neon-glow 1s ease-in-out infinite alternate;
-}
+        justify-content: center;
+        background-image: url(back.fix.jpg);
 
-@keyframes neon-glow {
-    from {
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #4D4DFF, 0 0 40px #4D4DFF, 0 0 55px #4D4DFF, 0 0 75px #4D4DFF;
-    }
-    to {
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #FFE81F, 0 0 40px #FFE81F, 0 0 55px #FFE81F, 0 0 75px #FFE81F;
-    }
-}
+        align-items: center;
+      }
+      .content {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        gap: 2px;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+        margin-top: 30px;
+        justify-content: center;
+      }
 
-        .cell:hover {
-            background-color: #ddd;
-        }
-   
+      .cell {
+        border-radius: 5px;
+        font-family: "Star Jedi", arial;
+        font-size: 20px;
+        margin: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: bold;
+        width: 70px;
+        height: 70px;
+        cursor: pointer;
+        border: var(--clr-neon) 2px solid;
+        box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
+        color: black;
+        -webkit-text-stroke: 1px rgb(255, 255, 255);
+        text-shadow: 0 0 20px #ffffff;
+      }
+      .cell:hover {
+        background-color: #ddd;
+      }
 
-        .player{
-        
-            font-family: 'Star Jedi', arial;
-    font-size: 20px;
-               display: flex;
-            flex-direction: row;
-            align-items: center;
-            color: #ddd;
-            margin-top: 25px;
-            justify-content: space-between;
-        }
-        .player-x-score{
-           font-size: 25px;
-           padding: 10px;
-           border: 5px solid rgb(175, 175, 175);
-       border-top:hidden ;
-       border-bottom: hidden;
-       border-left: hidden;
-            color: black;
-             -webkit-text-stroke: 1px rgb(255, 26, 26);
-    text-shadow: 0 0 20px #ff005b ;
-        }
-        .player-o-score{
-            font-size: 25px;
-            padding: 10px;
-            border: 5px solid rgb(175, 175, 175);
-       border-top:hidden ;
-       border-bottom: hidden;
-       border-right: hidden;
-       -webkit-text-stroke: 1px rgb(0, 8, 255);
-            color: rgb(0, 0, 0);
-            text-shadow: 0 0 20px #2f00ff ;
-        }
-        .score{
-            font-size: 40px;
-            padding: 20px;
-            margin-top: 5px;
-            text-align: center;
+      .player {
+        font-family: "Star Jedi", arial;
+        font-size: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: #ddd;
+        margin-top: 25px;
+        justify-content: space-between;
+      }
+      .player-x-score {
+        font-size: 25px;
+        padding: 10px;
+        border: 5px solid rgb(175, 175, 175);
+        border-top: hidden;
+        border-bottom: hidden;
+        border-left: hidden;
+        color: black;
+        -webkit-text-stroke: 1px rgb(255, 26, 26);
+        text-shadow: 0 0 20px #ff005b;
+      }
+      .player-o-score {
+        font-size: 25px;
+        padding: 10px;
+        border: 5px solid rgb(175, 175, 175);
+        border-top: hidden;
+        border-bottom: hidden;
+        border-right: hidden;
+        -webkit-text-stroke: 1px rgb(0, 8, 255);
+        color: rgb(0, 0, 0);
+        text-shadow: 0 0 20px #0099ff;
+      }
+      .score {
+        font-size: 40px;
+        padding: 20px;
+        margin-top: 5px;
+        text-align: center;
+      }
 
-        }
-
-.results{
-    font-size: 30px;
-    width: 200px;
-color: #000000;
--webkit-text-stroke: 1px rgb(238, 255, 0);
-text-align: center;
-  text-shadow: 0 0 .20em  rgba(255, 255, 255, 0.467),0 0 .50em var(--clr-neon)
- }
- .reset{
-    margin-top: 5px;
-    width: auto;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-  justify-content: space-around;
- }
- .reset-button{
-    font-family: 'Star Jedi', Arial;
-    font-size: 20px;
-    border-radius: 10px;
-background-color: #000000;
-border: 2px solid yellow;
-color: #000000;
--webkit-text-stroke: 1px rgb(238, 255, 0);
-box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
-text-shadow: 0 0 10px #e5ff00 ;
-cursor: pointer;
-       } 
-       .reset-button:hover {
-            color: #000000;
-            background-color: #FFE81F;
-        }
-        .reset-button:hover:before {
-            animation: none;
-            opacity: 0;
-        }
-        .reset-point{
-            margin-left: 10px;
-    font-family: 'Star Jedi', Arial;
-    font-size: 20px;
-    border-radius: 10px;
-background-color: #000000;
-border: 2px solid yellow;
-color: #000000;
--webkit-text-stroke: 1px rgb(238, 255, 0);
-box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
-text-shadow: 0 0 10px #e5ff00 ;
-cursor: pointer;
-       } 
-      
-        .reset-point:hover:before {
-            animation: none;
-            opacity: 0;
-        }
-        .reset-point:hover {
-            color: #000000;
-            background-color: #FFE81F;
-        }
-        .music-point {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: transparent;
-            border: 2px solid #FFE81F;
-            cursor: pointer;
-            z-index: 1;
-            color: #FFE81F;
-            font-size: 16px;
-            border-radius: 50%;
-            font-size: 30px;
-        }
-        .music-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: transparent;
-            border: 2px solid var(--clr-neon);
-            cursor: pointer;
-            z-index: 1;
-            color: var(--clr-neon);
-            font-size: 16px;
-            border-radius: 50%;
-            font-size: 30px;
-            text-shadow: 0 0 .20em #fff7, 0 0 .10em var(--clr-neon);
-            box-shadow: inset 0 0 .5em var(--clr-neon), 0 0 .5em var(--clr-neon);
-        }
-
-        .music-button:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: 400% 400%;
-            z-index: -1;
-            filter: blur(20px);
-            animation: neon-gradient 2s ease-in-out infinite;
-        }
-        .music-button.paused:before {
-            background-color: transparent;
-        }
-
-        .music-button.paused:after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 39px;
-            height: 2px;
-            background-color: var(--clr-neon);
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
+      .results {
+        font-size: 30px;
+        width: 200px;
+        color: #000000;
+        -webkit-text-stroke: 1px rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 0 0 20px #ffffff;
+      }
+      .reset {
+        margin-top: 5px;
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+      .reset-button {
+        font-family: "Star Jedi", Arial;
+        font-size: 20px;
+        border-radius: 10px;
+        background-color: #000000;
+        border: 2px solid yellow;
+        color: #000000;
+        -webkit-text-stroke: 1px rgb(238, 255, 0);
+        box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
+        text-shadow: 0 0 10px #e5ff00;
+        cursor: pointer;
+      }
+      .reset-button:hover {
+        color: #000000;
+        background-color: #ffe81f;
+      }
+      .reset-point {
+        margin-left: 10px;
+        font-family: "Star Jedi", Arial;
+        font-size: 20px;
+        border-radius: 10px;
+        background-color: #000000;
+        border: 2px solid yellow;
+        color: #000000;
+        -webkit-text-stroke: 1px rgb(238, 255, 0);
+        box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
+        text-shadow: 0 0 10px #e5ff00;
+        cursor: pointer;
+      }
+      .reset-point:hover {
+        color: #000000;
+        background-color: #ffe81f;
+      }
+      .music-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: transparent;
+        border: 2px solid var(--clr-neon);
+        cursor: pointer;
+        z-index: 1;
+        color: var(--clr-neon);
+        font-size: 16px;
+        border-radius: 50%;
+        font-size: 30px;
+        text-shadow: 0 0 0.2em #fff7, 0 0 0.1em var(--clr-neon);
+        box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
+      }
+      .music-button.paused:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 39px;
+        height: 2px;
+        background-color: var(--clr-neon);
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
 
         .music-button:hover {
             color: #000000;
@@ -266,33 +193,35 @@ cursor: pointer;
              -webkit-text-stroke: 1px rgb(255, 251, 0);
     text-shadow: 0 0 20px #fff700 ;
         }
+        .back-homepage {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: transparent;
+        border: 2px solid var(--clr-neon);
+        cursor: pointer;
+        z-index: 1;
+        color: var(--clr-neon);
+        font-size: 16px;
+        border-radius: 15%;
+        font-size: 25px;
+        text-shadow: 0 0 0.2em #fff7, 0 0 0.1em var(--clr-neon);
+        box-shadow: inset 0 0 0.5em var(--clr-neon), 0 0 0.5em var(--clr-neon);
+    }
+    .back-homepage:hover {
+        color: #000000;
+        background-color: var(--clr-neon);
+    }
 
-        .back-homepage{
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: transparent;
-            border: 2px solid var(--clr-neon);
-            cursor: pointer;
-            z-index: 1;
-            color: var(--clr-neon);
-            font-size: 16px;
-            border-radius: 15%;
-            font-size: 25px;
-            text-shadow: 0 0 .20em #fff7, 0 0 .10em var(--clr-neon);
-            box-shadow: inset 0 0 .5em var(--clr-neon), 0 0 .5em var(--clr-neon);
-        }
-        .back-homepage:hover {
-            color: #000000;
-            background-color: var(--clr-neon);
-        }
 
     </style>
-</head>
-<body>
-  
+  </head>
+  <body>
     <div class="container">
-        <button onclick="window.location.href = 'home.html';" class="back-homepage">Back</button>      
+      <button onclick="window.location.href = 'home.html';" class="back-homepage">
+        Back
+      </button>
+      
         <button onclick="toggleMusic()" class="music-button">♫</button>
       <div class="cursor-tacker">
 
@@ -357,223 +286,209 @@ cursor: pointer;
 </div>
  
     </div>
-   <audio></audio>
-   <audio id="background-music" src="imperial_march.mp3" autoplay loop></audio>
+    <audio></audio>
+    <audio id="background-music" src="imperial_march.mp3" autoplay loop></audio>
     <script>
-        const cells = document.querySelectorAll('.cell');
-        const boardSize = 5;
-        const winCondition = 4;
-        var currentPlayer = 'x';
+      const cells = document.querySelectorAll(".cell");
+      const boardSize = 5;
+      const winCondition = 4;
+      var currentPlayer = "x";
 
-        let gameEnded = false;
-        let gameover = 5 ;
-        let playerXScore = 0;
-        let playerOScore = 0;
-        const player1Win =document.getElementById('player1win');
-        const player2Win =document.getElementById('player2win');
-const tie = document.getElementById('tie');
+      let gameEnded = false;
+      let gameover = 5;
+      let playerXScore = 0;
+      let playerOScore = 0;
+      const player1Win = document.getElementById("player1win");
+      const player2Win = document.getElementById("player2win");
+      const tie = document.getElementById("tie");
 
-        const score1Element = document.getElementById('score1');
-        const score2Element = document.getElementById('score2');
-        cells.forEach(cell => {
-            cell.addEventListener('click', handleCellClick);
-        });
-        function randomFirstPlayer(){
+      const score1Element = document.getElementById("score1");
+      const score2Element = document.getElementById("score2");
+      cells.forEach((cell) => {
+        cell.addEventListener("click", handleCellClick);
+      });
+      function randomFirstPlayer() {
+        const num1 = Math.floor(Math.random() * 2) + 1;
+        currentPlayer = num1 === 1 ? "x" : "o";
+        console.log(currentPlayer);
+      }
+      function handleCellClick() {
+        if (gameEnded || this.textContent !== "") return;
 
-            const num1 = Math.floor(Math.random() * 2) + 1;
-  currentPlayer = num1 === 1 ? 'x' : 'o';
-  console.log(currentPlayer);
-         
-        }
-        function handleCellClick() {
-            if (gameEnded || this.textContent !== '') return;
-    
-            this.textContent = currentPlayer;
-    
-            if (checkWinCondition(currentPlayer)) {
-                const winnerMessage = `Player ${currentPlayer} wins!`;/*       fix code (bi;;) display when win*/
+        this.textContent = currentPlayer;
 
-    document.getElementById('result').textContent = winnerMessage;
-                
-                gameEnded = true;
-               
-                if (currentPlayer === 'x') {
-                    player1Win.play();
-                    playerXScore++;
-                    score1Element.textContent = playerXScore;
-                } else {
-                    player2Win.play();
-                    playerOScore++;
-                    score2Element.textContent = playerOScore;
-                }     
-            } else if (checkDrawCondition()) {
-                const drawMessage = "Tie!";
-    document.getElementById('result').textContent = drawMessage;
-tie.play();
+        if (checkWinCondition(currentPlayer)) {
+          const winnerMessage = `Player ${currentPlayer} wins!`; /*       fix code (bi;;) display when win*/
 
-                gameEnded = true;    
-                                        /*       fix code (bill) display when draw*/
-           } else {
-    currentPlayer = currentPlayer === 'x' ? 'o' : 'x';
-  }
+          document.getElementById("result").textContent = winnerMessage;
 
-  // Remove previous player's color class
-  this.classList.remove('red', 'blue');
+          gameEnded = true;
 
-// Add current player's color class
-this.classList.add(currentPlayer === 'x' ? 'blue' : 'red');
-        
+          if (currentPlayer === "x") {
+            player1Win.play();
+            playerXScore++;
+            score1Element.textContent = playerXScore;
+          } else {
+            player2Win.play();
+            playerOScore++;
+            score2Element.textContent = playerOScore;
+          }
+        } else if (checkDrawCondition()) {
+          const drawMessage = "tie!";
+          document.getElementById("result").textContent = drawMessage;
+          tie.play();
 
-// Add current player's color class
-
-
-        }
-    
-        function checkWinCondition(player) {
-            
-            // Check rows
-            for (let row = 0; row < boardSize; row++) {
-                for (let col = 0; col <= boardSize - winCondition; col++) {
-                    let hasWin = true;
-                    for (let i = 0; i < winCondition; i++) {
-                        const cellIndex = row * boardSize + col + i;
-                        if (cells[cellIndex].textContent !== player) {
-                       //     let title = document.getElementById(row.toString()+'-'+i.toString());
-                         //   title.classList.add('winner');
-                       
-                            hasWin = false;
-                         
-                            break;
-                        }
-                    }
-                    if (hasWin) return true;
-                }
-            }
-    
-            // Check columns
-            for (let col = 0; col < boardSize; col++) {
-                for (let row = 0; row <= boardSize - winCondition; row++) {
-                    let hasWin = true;
-                    for (let i = 0; i < winCondition; i++) {
-                        const cellIndex = (row + i) * boardSize + col;
-                        if (cells[cellIndex].textContent !== player) {
-                            hasWin = false;
-                            break;
-                        }
-                    }
-                    if (hasWin) return true;
-                }
-               
-            }
-    
-            // Check diagonals (top-left to bottom-right)
-            for (let row = 0; row <= boardSize - winCondition; row++) {
-                for (let col = 0; col <= boardSize - winCondition; col++) {
-                    let hasWin = true;
-                    for (let i = 0; i < winCondition; i++) {
-                        const cellIndex = (row + i) * boardSize + (col + i);
-                        if (cells[cellIndex].textContent !== player) {
-                            hasWin = false;
-                            break;
-                        }
-                    }
-                    if (hasWin) return true;
-                }
-            }
-    
-            // Check diagonals (top-right to bottom-left)
-            for (let row = 0; row <= boardSize - winCondition; row++) {
-                for (let col = winCondition - 1; col < boardSize; col++) {
-                    let hasWin = true;
-                    for (let i = 0; i < winCondition; i++) {
-                        const cellIndex = (row + i) * boardSize + (col - i);
-                        if (cells[cellIndex].textContent !== player) {
-                            hasWin = false;
-                            break;
-                        }
-                    }
-                    if (hasWin) return true;
-                }
-            }
-    
-            return false;
-        }  function updateScore(player) {
-            if (player === 'X') {
-                playerXScore++;
-                document.querySelector('.player-x-score').textContent = `Player x: ${playerXScore}`;
-
-            } else {
-                playerOScore++;
-                document.querySelector('.player-o-score').textContent = `Player o: ${playerOScore}`;
-            }
-        }
-    
-        function checkDrawCondition() {
-            return Array.from(cells).every(cell => {
-                return cell.textContent !== '';
-            });
-        }
-        function resetBoard() {
-            cells.forEach(cell => {
-                cell.textContent = '';
-            });
-        
-            currentPlayer = 'x';
-            gameEnded = false;
-            document.getElementById('result').textContent = ''; 
-        }
-        var audio = document.getElementById("background-music");
-        var musicButton = document.querySelector(".music-button");
-
-
-        function toggleMusic() {
-        if (audio.paused) {
-            audio.play();
-            musicButton.classList.remove("paused");
+          gameEnded = true;
+          /*       fix code (bill) display when draw*/
         } else {
-            audio.pause();
-            musicButton.classList.add("paused");
+          currentPlayer = currentPlayer === "x" ? "o" : "x";
         }
-        }
-        /*score*/
-        var score1 =0;
-        var score2 =0;
-        var currentPlayer = 'x';
-        function randomFirstPlayer(){
-            const num1 = Math.floor((Math.random() * 2) + 1);
-            if(num1 == 1){
-                currentPlayer ='x';         
-            }else{
-                currentPlayer ='o';       
+
+        // Remove previous player's color class
+
+        // Add current player's color class
+      }
+
+      function checkWinCondition(player) {
+        // Check rows
+        for (let row = 0; row < boardSize; row++) {
+          for (let col = 0; col <= boardSize - winCondition; col++) {
+            let hasWin = true;
+            for (let i = 0; i < winCondition; i++) {
+              const cellIndex = row * boardSize + col + i;
+              if (cells[cellIndex].textContent !== player) {
+                //     let title = document.getElementById(row.toString()+'-'+i.toString());
+                //   title.classList.add('winner');
+
+                hasWin = false;
+
+                break;
+              }
             }
-
-            console.log(currentPlayer);
-          
-        }
-        function scorePlayer1() {
-            score1++;
-            console.log(score1);
-           document.getElementById('result').textContent = winnerMessage;
-        }
-        function scorePlayer2() {
-            score2++;
-            console.log(score2);
-            document.getElementById('score2').textContent = score2;
+            if (hasWin) return true;
+          }
         }
 
-        function resetPoint() {
-            playerXScore = 0;
-                    score1Element.textContent = playerXScore;
-                    playerYScore = 0;
-                    score2Element.textContent = playerYScore;
-                    
-    document.getElementById('result').textContent = "";
-    }
+        // Check columns
+        for (let col = 0; col < boardSize; col++) {
+          for (let row = 0; row <= boardSize - winCondition; row++) {
+            let hasWin = true;
+            for (let i = 0; i < winCondition; i++) {
+              const cellIndex = (row + i) * boardSize + col;
+              if (cells[cellIndex].textContent !== player) {
+                hasWin = false;
+                break;
+              }
+            }
+            if (hasWin) return true;
+          }
+        }
+
+        // Check diagonals (top-left to bottom-right)
+        for (let row = 0; row <= boardSize - winCondition; row++) {
+          for (let col = 0; col <= boardSize - winCondition; col++) {
+            let hasWin = true;
+            for (let i = 0; i < winCondition; i++) {
+              const cellIndex = (row + i) * boardSize + (col + i);
+              if (cells[cellIndex].textContent !== player) {
+                hasWin = false;
+                break;
+              }
+            }
+            if (hasWin) return true;
+          }
+        }
+
+        // Check diagonals (top-right to bottom-left)
+        for (let row = 0; row <= boardSize - winCondition; row++) {
+          for (let col = winCondition - 1; col < boardSize; col++) {
+            let hasWin = true;
+            for (let i = 0; i < winCondition; i++) {
+              const cellIndex = (row + i) * boardSize + (col - i);
+              if (cells[cellIndex].textContent !== player) {
+                hasWin = false;
+                break;
+              }
+            }
+            if (hasWin) return true;
+          }
+        }
+
+        return false;
+      }
+      function updateScore(player) {
+        if (player === "X") {
+          playerXScore++;
+          document.querySelector(
+            ".player-x-score"
+          ).textContent = `Player x: ${playerXScore}`;
+        } else {
+          playerOScore++;
+          document.querySelector(
+            ".player-o-score"
+          ).textContent = `Player o: ${playerOScore}`;
+        }
+      }
+
+      function checkDrawCondition() {
+        return Array.from(cells).every((cell) => {
+          return cell.textContent !== "";
+        });
+      }
+      function resetBoard() {
+        cells.forEach((cell) => {
+          cell.textContent = "";
+        });
+
+        currentPlayer = "x";
+        gameEnded = false;
+        document.getElementById("result").textContent = "";
+      }
+      var audio = document.getElementById("background-music");
+      var musicButton = document.querySelector(".music-button");
+
+      function toggleMusic() {
+        if (audio.paused) {
+          audio.play();
+          musicButton.classList.remove("paused");
+        } else {
+          audio.pause();
+          musicButton.classList.add("paused");
+        }
+      }
+      /*score*/
+      var score1 = 0;
+      var score2 = 0;
+      var currentPlayer = "x";
+      function randomFirstPlayer() {
+        const num1 = Math.floor(Math.random() * 2 + 1);
+        if (num1 == 1) {
+          currentPlayer = "x";
+        } else {
+          currentPlayer = "o";
+        }
+
+        console.log(currentPlayer);
+      }
+      function scorePlayer1() {
+        score1++;
+        console.log(score1);
+        document.getElementById("result").textContent = winnerMessage;
+      }
+      function scorePlayer2() {
+        score2++;
+        console.log(score2);
+        document.getElementById("score2").textContent = score2;
+      }
+
+      function resetPoint() {
+        playerXScore = 0;
+        score1Element.textContent = playerXScore;
+        playerYScore = 0;
+        score2Element.textContent = playerYScore;
+
+        document.getElementById("result").textContent = "";
+      }
     </script>
-    
-    
-    
-    
-    
-</body>
+  </body>
 </html>
